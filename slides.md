@@ -309,6 +309,10 @@ A group of instructor rows by `dept_name` has multiple `id` values. So which `id
 </v-click>
 
 
+</div>
+
+<div class="p-6">
+
 <v-click>
 
 ```sql
@@ -320,6 +324,10 @@ HAVING AVG(salary) > 42000;
 
 </v-click>
 
+</div>
+
+<div class="p-4">
+
 
 <v-click>
 
@@ -327,8 +335,8 @@ HAVING AVG(salary) > 42000;
 
 </v-click>
 
-
 </div>
+
 
 ---
 
@@ -779,8 +787,6 @@ INNER JOIN course c ON i.id = c.id;
 ## Inner Join Visualized
 
 <div class="p-4">
-
-
 
 - A standard inner join only includes rows where there is a match in both tables
   - If no match is found for a row in one table, that row is excluded from the result
