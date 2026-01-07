@@ -13,9 +13,25 @@ const props = defineProps({
   cellMaxWidth: { type: String, default: '18ch' },
 })
 
+const resolvedSrc = computed(() => {
+  const s = props.src || ''
+  if (!s) return ''
+  // leave absolute URLs alone
+  if (/^https?:\/\//i.test(s)) return s
+
+  const base = import.meta.env.BASE_URL || '/'
+  // handle "/data/x.csv" and "data/x.csv"
+  const path = s.startsWith('/') ? s.slice(1) : s
+  return base.endsWith('/') ? `${base}${path}` : `${base}/${path}`
+})
+
+
+
+
 const raw = ref('')
 const loading = ref(false)
 const error = ref('')
+
 
 async function load() {
   error.value = ''
@@ -24,15 +40,15 @@ async function load() {
     raw.value = props.csv
     return
   }
-  if (!props.src) {
+  if (!resolvedSrc.value) {
     raw.value = ''
     return
   }
 
   try {
     loading.value = true
-    const res = await fetch(props.src)
-    if (!res.ok) throw new Error(`Fetch failed (${res.status})`)
+    const res = await fetch(resolvedSrc.value)
+    if (!res.ok) throw new Error(`Fetch failed (${res.status}) for ${resolvedSrc.value}`)
     raw.value = await res.text()
   } catch (e: any) {
     error.value = e?.message ?? String(e)
@@ -41,6 +57,8 @@ async function load() {
     loading.value = false
   }
 }
+
+
 
 onMounted(load)
 watch(() => [props.src, props.csv], load)
