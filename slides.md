@@ -51,7 +51,7 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 <v-clicks>
 
-- Summary Functions
+- "Summary" Functions
 - Aggregation Functions: `GROUP BY`, `HAVING` 
 - Copy data from a table to another
 - Update using Case expression
@@ -65,7 +65,7 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 ---
 
-## Summary Functions
+## "Summary" Functions
 
 <div class="p-4">
 
@@ -118,22 +118,41 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 <div class="p-4">
 
+<v-click>
+
 - Example: find the min, max and average instructor salary 
+
+</v-click>
+
+
+<v-click>
+
 
 ```sql
 SELECT MIN(salary), MAX(salary), AVG(salary)
 FROM instructor;
 ```
 
+</v-click>
+
 <br>
 
+<v-click>
+
 - Example: how many Comp. Sci. instructors earn $70,000 or more?
+
+</v-click>
+
+<v-click>
+
 
 ```sql
 SELECT COUNT(*)
 FROM instructor
 WHERE dept_name = 'Comp. Sci' AND salary >= 70000;
 ```
+
+</v-click>
 
 </div>
 
@@ -808,7 +827,7 @@ student JOIN takes on student.ID=takes.ID
 ```
 
 
-![](/images/join2.png){class="w-120"}
+![](/images/join2.png){class="w-130"}
 
 </div>
 
@@ -824,7 +843,7 @@ student JOIN takes on student.ID=takes.ID
 ```
 
 
-![](/images/join3.png){class="w-100"}
+![](/images/join3.png){class="w-110"}
 
 </div>
 
@@ -919,34 +938,36 @@ WHERE P;
 <div class="p-4">
 
 
+
 - Beware of unrelated attributes with same name which get equated incorrectly
-- Example - List the names of students along with the titles of courses that they have taken
+- Example --- List the names of students along with the titles of courses that they have taken
 
 
-<small>Correct version</small>
 ```sql
-SELECT student_name, course_title
+--- Correct 
+SELECT student_name, course.title
 FROM student
 NATURAL JOIN takes
 JOIN course ON takes.course_id = course.course_id;
 ```
 
-<small>Incorrect version</small>
+
 ```sql
+--- Incorrect
 SELECT student_name, course.title AS course_title
 FROM student
 NATURAL JOIN takes
 NATURAL JOIN course;
 ```
 
-- The natural join will include the predicate `student.dept_name = course_dept_name`  
-- This changes the meaning of the query to courses taken in the student’s major.
+- The natural join will include the predicate `student.dept_name = course.dept_name`  
+- This changes the meaning of the query to courses taken in the student's major.
 
 </div>
 
 ---
 
-## Natural Join with Using Clause
+## Join with `USING` Clause
 
 <div class="p-4">
 
@@ -959,6 +980,8 @@ FROM student
 NATURAL JOIN takes
 JOIN course USING (course_id);
 ```
+
+<br>
 
 - Equivalent to 
 
@@ -1001,23 +1024,12 @@ JOIN course ON course.course_id = takes.course_id;
 
 
 - Relation `course`
-
-![](/images/course.png){class="w-100"}
-
-
-
-
+![](/images/course.png){class="w-70"} <br>
 - Relation `prereq`
-
-
-![](/images/prereq.png){class="w-100"}
-
-
+![](/images/prereq.png){class="w-40"} <br>
 - Observe that 
   - course information is missing CS-437
   - prereq information is missing CS-315
-
-
 </div>
 
 
@@ -1070,6 +1082,7 @@ ON course.course_id = prereq.course_id;
 
 ```sql
 SELECT *
+FROM course
 FULL OUTER JOIN prereq
 ON course.course_id = prereq.course_id;
 ```
@@ -1090,13 +1103,13 @@ Find the number of students each instructor advises.  If an instructor does advi
 
 Advisor tables has pair of student id, instructor id values.
 
-![](/images/advisor.png){class="w-100"}
+![](/images/advisor.png){class="w-20"}
 
 
-Problem:  Instructor Wu 12121 does not advise any students.  An inner join will not find any match for 12121 and so Wu will not be in the result set.
+**Problem:**  Instructor Wu 12121 does not advise any students.  An inner join will not find any match for 12121 and so Wu will not be in the result set.
 
 
-Solution:  Use left outer join and count column s_ID.  Left join will return a s_ID value of null and count of a null value will give 0.
+**Solution:**  Use left outer join and count column `s_ID`.  Left join will return a `s_ID` value of null and count of a null value will give 0.
 
 
 </div>
@@ -1118,7 +1131,7 @@ GROUP BY instructor.instructor_id, instructor.instructor_name
 ORDER BY instructor.instructor_id;
 ```
 
-![](/images/grouping.png){class="w-100"}
+![](/images/grouping.png){class="w-60"}
 
 </div>
 
