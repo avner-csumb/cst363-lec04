@@ -5,12 +5,8 @@ theme: default
 # like them? see https://unsplash.com/collections/94734566/slidev
 background: https://cover.sli.dev
 # some information about your slides (markdown enabled)
-title: Welcome to Slidev
-info: |
-  ## Slidev Starter Template
-  Presentation slides for developers.
+title: CST 363
 
-  Learn more at [Sli.dev](https://sli.dev)
 # apply UnoCSS classes to the current slide
 class: text-center
 # https://sli.dev/features/drawing
@@ -24,24 +20,9 @@ mdc: true
 
 # Aggregation, Joins
 
-Presentation slides for developers
+CST 363
 
-<div @click="$slidev.nav.next" class="mt-12 py-1" hover:bg="white op-10">
-  Press Space for next page <carbon:arrow-right />
-</div>
 
-<div class="abs-br m-6 text-xl">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="slidev-icon-btn">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" class="slidev-icon-btn">
-    <carbon:logo-github />
-  </a>
-</div>
-
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
 
 ---
 
@@ -61,6 +42,7 @@ The last comment block of each slide will be treated as slide notes. It will be 
 </v-clicks>
 
 </div>
+
 
 
 ---
@@ -83,6 +65,8 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 
 </div>
+
+
 
 ---
 
@@ -110,6 +94,9 @@ The last comment block of each slide will be treated as slide notes. It will be 
 </v-click>
 
 </div>
+
+
+
 
 ---
 
@@ -156,6 +143,10 @@ WHERE dept_name = 'Comp. Sci' AND salary >= 70000;
 
 </div>
 
+
+
+
+
 ---
 
 ## Aside: Introducing Aliases
@@ -195,6 +186,9 @@ WHERE dept_name = 'Comp. Sci' AND salary >= 70000;
 
 </div>
 
+
+
+
 ---
 
 ## Aggregate Functions – GROUP BY
@@ -213,6 +207,9 @@ WHERE dept_name = 'Comp. Sci' AND salary >= 70000;
 </v-clicks>
 
 </div>
+
+
+
 
 ---
 
@@ -285,6 +282,10 @@ A group of instructor rows by `dept_name` has multiple `id` values. So which `id
 </div>
 
 
+
+
+
+
 ---
 
 ## Aggregate Functions – HAVING Clause
@@ -312,6 +313,7 @@ A group of instructor rows by `dept_name` has multiple `id` values. So which `id
 </v-clicks>
 
 </div>
+
 
 
 ---
@@ -357,6 +359,7 @@ HAVING AVG(salary) > 42000;
 </div>
 
 
+
 ---
 
 ## Copy data from a table to another
@@ -392,6 +395,7 @@ WHERE dept_name = 'Biology' AND tot_cred > 100;
 </v-click>
 
 </div>
+
 
 ---
 
@@ -435,6 +439,8 @@ WHERE salary <= 100000;
 </div>
 
 
+
+
 ---
 
 ## CASE Statement for Conditional Updates
@@ -463,6 +469,9 @@ WHERE <filter_condition>;
 
 </div>
 
+
+
+
 ---
 
 ## Example: CASE Statement for Conditional Updates
@@ -490,6 +499,8 @@ SET salary = CASE
 </v-click>
 
 </div>
+
+
 
 
 ---
@@ -523,6 +534,7 @@ UNION
 </v-click>
 
 </div>
+
 
 ---
 
@@ -559,6 +571,7 @@ INTERSECT
 
 </div>
 
+
 ---
 
 ## Find courses that ran in Fall 2009 but not in Spring 2010
@@ -590,7 +603,6 @@ EXCEPT
 </div>
 
 
-
 ---
 
 ## Set Operations (cont.)
@@ -610,6 +622,7 @@ EXCEPT
 
 
 </div>
+
 
 
 ---
@@ -646,6 +659,8 @@ EXCEPT
 </div>
 
 </div>
+
+
 
 ---
 
@@ -686,6 +701,8 @@ EXCEPT
 </div>
 
 
+
+
 ---
 
 ## Basic Query Structure 
@@ -716,6 +733,8 @@ ORDER BY A1, ..., Am
 </div>
 
 
+
+
 ---
 
 ## Aside: Table Aliases
@@ -736,6 +755,8 @@ JOIN departments d ON e.dept_id = d.dept_id;
 </div>
 
 
+
+
 ---
 
 ## How joins work
@@ -749,7 +770,7 @@ JOIN departments d ON e.dept_id = d.dept_id;
 
 <v-click>
 
-![](/images/inst_course.png){class="w-100"}
+![](/images/inst_course.png){class="w-80"}
 
 </v-click>
 
@@ -792,14 +813,16 @@ INNER JOIN course c ON i.id = c.id;
 
 <br><br><br>
 
-![](/images/join1.png){class="w-100"}
-
+![](/images/join1.png){class="w-70"}
 </v-click>
 
 
 </div>
 
 </div>
+
+
+
 
 ---
 
@@ -816,6 +839,9 @@ INNER JOIN course c ON i.id = c.id;
 
 </div>
 
+
+
+
 ---
 
 ## Example
@@ -830,6 +856,7 @@ student JOIN takes on student.ID=takes.ID
 ![](/images/join2.png){class="w-130"}
 
 </div>
+
 
 
 ---
@@ -856,10 +883,17 @@ student JOIN takes on student.ID=takes.ID
 <div class="p-4">
 
 
+
+<v-clicks>
+
 - The `ON` condition allows a general predicate over the relations being  joined
 - This predicate is written like a where clause predicate except for the use of the keyword `ON`
 
+</v-clicks>
+
 <br>
+
+<v-click>
 
 - Query example:
 
@@ -869,14 +903,25 @@ FROM student
 JOIN takes ON student.student_id = takes.student_id;
 ```
 
+</v-click>
+
 <br>
+
+<v-clicks>
+
 
 - The `ON` condition above specifies that a tuple from student matches a tuple from takes when their `id` values are equal.
 - Since the `id` column appears in both tables, it is necessary to qualify it with the table name.
 - If there is no match,  (i.e. the student has not taken any courses yet), the student row does not show up in the result.
 
 
+</v-clicks>
+
+
 </div>
+
+
+
 
 
 ---
@@ -885,10 +930,15 @@ JOIN takes ON student.student_id = takes.student_id;
 
 <div class="p-4">
 
-
+<v-clicks>
 
 - Natural join matches tuples with the same values for all common attributes, and retains only one copy of each common column.
 - List the names of students along with the course ID of the courses that they have taken
+
+</v-clicks>
+
+
+<v-click>
 
 ```sql
 SELECT student_name, course_id
@@ -896,7 +946,11 @@ FROM student
 JOIN takes on student.student_id = takes.student_id
 ```
 
+</v-click>
+
 <br>
+
+<v-click>
 
 - Same query in SQL with “natural join” construct
 
@@ -905,7 +959,11 @@ SELECT student_name, course_id
 FROM student NATURAL JOIN takes;
 ```
 
+</v-click>
+
 </div>
+
+
 
 
 ---
@@ -931,6 +989,8 @@ WHERE P;
 </div>
 
 
+
+
 ---
 
 ## Danger in Natural Join
@@ -939,8 +999,15 @@ WHERE P;
 
 
 
+<v-clicks>
+
 - Beware of unrelated attributes with same name which get equated incorrectly
 - Example --- List the names of students along with the titles of courses that they have taken
+
+</v-clicks>
+
+
+<v-click>
 
 
 ```sql
@@ -951,6 +1018,9 @@ NATURAL JOIN takes
 JOIN course ON takes.course_id = course.course_id;
 ```
 
+</v-click>
+
+<v-click>
 
 ```sql
 --- Incorrect
@@ -960,10 +1030,19 @@ NATURAL JOIN takes
 NATURAL JOIN course;
 ```
 
+
+</v-click>
+
+<v-clicks>
+
 - The natural join will include the predicate `student.dept_name = course.dept_name`  
 - This changes the meaning of the query to courses taken in the student's major.
 
+</v-clicks>
+
 </div>
+
+
 
 ---
 
@@ -971,6 +1050,8 @@ NATURAL JOIN course;
 
 <div class="p-4">
 
+
+<v-click>
 
 - Query example
 
@@ -981,7 +1062,11 @@ NATURAL JOIN takes
 JOIN course USING (course_id);
 ```
 
+</v-click>
+
 <br>
+
+<v-click>
 
 - Equivalent to 
 
@@ -991,6 +1076,8 @@ FROM student
 JOIN takes ON student.student_id = takes.student_id
 JOIN course ON course.course_id = takes.course_id;
 ```
+
+</v-click>
 
 
 </div>
@@ -1004,16 +1091,22 @@ JOIN course ON course.course_id = takes.course_id;
 <div class="p-4">
 
 
+<v-clicks depth="2">
+
 - An extension of the join operation that avoids loss of information.
 - Computes the join and then adds tuples form one relation that do not match tuples in the other relation to the result of the join. 
 - Uses null values for missing columns.
 - Three forms of outer join:
-  - left outer join – adds tuples from the left relation
-  - right outer join – adds tuples from the right relation
-  - full outer join – adds tuples from both relations
+  - `LEFT JOIN` – adds tuples from the left relation
+  - `RIGHT JOIN` – adds tuples from the right relation
+  - `FULL JOIN` – adds tuples from both relations
 
+</v-clicks>
 
 </div>
+
+
+
 
 
 ---
@@ -1022,6 +1115,7 @@ JOIN course ON course.course_id = takes.course_id;
 
 <div class="p-4">
 
+<v-clicks depth="2">
 
 - Relation `course`
 ![](/images/course.png){class="w-70"} <br>
@@ -1030,7 +1124,12 @@ JOIN course ON course.course_id = takes.course_id;
 - Observe that 
   - course information is missing CS-437
   - prereq information is missing CS-315
+
+</v-clicks>
+
 </div>
+
+
 
 
 ---
@@ -1046,9 +1145,17 @@ FROM course
 LEFT JOIN prereq ON course.course_id = prereq.course_id;
 ```
 
+<v-click>
+
 ![](/images/course_outer.png){class="w-100"}
 
+
+</v-click>
+
 </div>
+
+
+
 
 
 ---
@@ -1066,8 +1173,13 @@ RIGHT OUTER JOIN prereq
 ON course.course_id = prereq.course_id;
 ```
 
+
+<v-click>
+
 ![](/images/right_outer.png){class="w-100"}
 
+
+</v-click>
 
 </div>
 
@@ -1087,10 +1199,21 @@ FULL OUTER JOIN prereq
 ON course.course_id = prereq.course_id;
 ```
 
+
+<v-click>
+
 ![](/images/full_outer.png){class="w-100"}
 
 
+</v-click>
+
 </div>
+
+
+
+
+
+
 
 ---
 
@@ -1098,21 +1221,22 @@ ON course.course_id = prereq.course_id;
 
 <div class="p-4">
 
+<v-clicks>
 
-Find the number of students each instructor advises.  If an instructor does advise any students, report a count of 0.
+- Find the number of students each instructor advises.  If an instructor does advise any students, report a count of 0. <br>
+- Advisor tables has pair of student id, instructor id values.
 
-Advisor tables has pair of student id, instructor id values.
-
-![](/images/advisor.png){class="w-20"}
-
-
-**Problem:**  Instructor Wu 12121 does not advise any students.  An inner join will not find any match for 12121 and so Wu will not be in the result set.
+![](/images/advisor.png){class="pl-5 w-25"}
 
 
-**Solution:**  Use left outer join and count column `s_ID`.  Left join will return a `s_ID` value of null and count of a null value will give 0.
+- **Problem:**  Instructor Wu 12121 does not advise any students.  An inner join will not find any match for 12121 and so Wu will not be in the result set. <br>
+- **Solution:**  Use left outer join and count column `s_ID`.  Left join will return a `s_ID` value of null and count of a null value will give 0.
 
+</v-clicks>
 
 </div>
+
+
 
 
 ---
@@ -1131,9 +1255,16 @@ GROUP BY instructor.instructor_id, instructor.instructor_name
 ORDER BY instructor.instructor_id;
 ```
 
-![](/images/grouping.png){class="w-60"}
+<v-click>
+
+![](/images/grouping.png){class="w-50"}
+
+</v-click>
 
 </div>
+
+
+
 
 ---
 
@@ -1149,12 +1280,17 @@ CREATE TABLE emp_super (
 );
 ```
 
-Find Bob's supervisor.
-Find the supervisor of Bob’s supervisor.
-Can you find  ALL the supervisors (direct and indirect) of Bob?
+- Find Bob's supervisor.
+- Find the supervisor of Bob’s supervisor.
+- Can you find  ALL the supervisors (direct and indirect) of Bob?
 
 
 </div>
+
+
+
+
+
 
 
 ---
@@ -1187,6 +1323,8 @@ instructor AS T ≡ instructor T
 </div>
 
 
+
+
 ---
 
 ## Self Join Example
@@ -1195,7 +1333,7 @@ instructor AS T ≡ instructor T
 <div class="p-4">
 
 
-Find the supervisor of Bob’='s supervisor.
+Find the supervisor of Bob's supervisor.
 
 ```sql
 SELECT t1.person, t2.supervisor
@@ -1203,5 +1341,27 @@ FROM emp_super AS t1
 JOIN emp_super AS t2 ON t1.supervisor = t2.person
 WHERE t1.person = 'Bob';
 ```
+
+</div>
+
+
+
+---
+
+## Conclusion --- Aggregation and Joins
+
+<div class="p-5">
+
+* **Aggregation** summarizes rows: `COUNT / SUM / AVG / MIN / MAX` with `GROUP BY`.
+* Use **WHERE** to filter rows *before* grouping; use **HAVING** to filter groups *after* grouping.
+* **Joins** combine tables: **INNER** keeps matches only; **OUTER** preserves unmatched rows with `NULL`.
+* Prefer explicit `JOIN ... ON ...`; use `USING` intentionally; avoid `NATURAL JOIN` unless you fully control shared column names.
+
+
+**Common “gotchas” to avoid**
+
+* Selecting non-aggregated columns not in `GROUP BY`.
+* Using `COUNT(*)` when you need “0 counts” (use `LEFT JOIN` + `COUNT(right_table.col)`).
+* Accidental joins from same-named columns (the `NATURAL JOIN` trap).
 
 </div>
