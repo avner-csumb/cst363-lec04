@@ -1,11 +1,11 @@
 ---
 # try also 'default' to start simple
-theme: default
+theme: seriph
 # random image from a curated Unsplash collection by Anthony
 # like them? see https://unsplash.com/collections/94734566/slidev
 background: https://cover.sli.dev
 # some information about your slides (markdown enabled)
-title: CST 363
+title: Aggregation, Joins
 
 # apply UnoCSS classes to the current slide
 class: text-center
@@ -1223,14 +1223,14 @@ ON course.course_id = prereq.course_id;
 
 <v-clicks>
 
-- Find the number of students each instructor advises.  If an instructor does advise any students, report a count of 0. <br>
-- Advisor tables has pair of student id, instructor id values.
+- Find the number of students each instructor advises.  If an instructor does not advise any students, report a count of 0. <br>
+- Advisor tables has pair of "student id", "instructor id" values.
 
 ![](/images/advisor.png){class="pl-5 w-25"}
 
 
-- **Problem:**  Instructor Wu 12121 does not advise any students.  An inner join will not find any match for 12121 and so Wu will not be in the result set. <br>
-- **Solution:**  Use left outer join and count column `s_ID`.  Left join will return a `s_ID` value of null and count of a null value will give 0.
+- **Problem:**  Instructor Wu 12121 does not advise any students.<br>An inner join will not find any match for 12121 and so Wu will not be in the result set. <br>
+- **Solution:**  Use left outer join and count column `s_ID`.<br>Left join will return a `s_ID` value of null and count of a null value will give 0.
 
 </v-clicks>
 
@@ -1247,12 +1247,14 @@ ON course.course_id = prereq.course_id;
 
 
 ```sql
-SELECT instructor.instructor_id, instructor.instructor_name,
-    COUNT(advisor.student_id) AS advised_students
-FROM instructor
-LEFT JOIN advisor ON instructor.instructor_id = advisor.instructor_id
-GROUP BY instructor.instructor_id, instructor.instructor_name
-ORDER BY instructor.instructor_id;
+SELECT i.instructor_id,
+       i.instructor_name,
+       COUNT(a.student_id) AS advised_students
+FROM instructor AS i
+LEFT JOIN advisor AS a
+  ON a.instructor_id = i.instructor_id
+GROUP BY i.instructor_id, i.instructor_name
+ORDER BY i.instructor_id;
 ```
 
 <v-click>
@@ -1280,6 +1282,8 @@ CREATE TABLE emp_super (
 );
 ```
 
+<br>
+
 - Find Bob's supervisor.
 - Find the supervisor of Bob’s supervisor.
 - Can you find  ALL the supervisors (direct and indirect) of Bob?
@@ -1300,8 +1304,8 @@ CREATE TABLE emp_super (
 <div class="p-4">
 
 
-- SQL allows renaming relations and attributes using the AS clause:
-  - old-name AS new-name
+- SQL allows renaming relations and attributes using the `AS` clause:
+  - `old-name AS new-name`
 
 - Find the names of all instructors who have a higher salary than Wu. 
 
