@@ -1284,14 +1284,16 @@ CREATE TABLE emp_super (
 
 <br>
 
+<img src="/images/self_j1.png" class="w-60" />
+
+<br>
+
 - Find Bob's supervisor.
 - Find the supervisor of Bob’s supervisor.
 - Can you find  ALL the supervisors (direct and indirect) of Bob?
 
 
 </div>
-
-
 
 
 
@@ -1338,6 +1340,10 @@ instructor AS T ≡ instructor T
 
 
 Find the supervisor of Bob's supervisor.
+
+<img src="/images/self_j1.png" class="w-60" />
+
+<br>
 
 ```sql
 SELECT t1.person, t2.supervisor
